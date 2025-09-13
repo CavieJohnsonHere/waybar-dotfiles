@@ -1,0 +1,155 @@
+{
+    "layer": "top",
+    "position": "top",
+    "mod": "dock",
+    "exclusive": true,
+    "passthrough": false,
+    "gtk-layer-shell": true,
+    "height": 28,
+    "margin-right": 0,
+    "margin-left": 0,
+    "modules-left": [
+        "tray",
+        "custom/weather"
+    ],
+    "modules-center": [
+        "custom/left_div#3",
+        "memory",
+        "cpu",
+        "battery",
+        "custom/left_div#2",
+        "hyprland/workspaces",
+        "custom/left_div#1",
+        "custom/distro",
+        "custom/right_div#1",
+        "clock",
+        "custom/right_div#2",
+        "network",
+        "bluetooth",
+        "backlight",
+        "hyprland/language",
+        "custom/right_div#3",
+    ],
+    "custom/distro": {
+        "format": "󰣇",
+        "tooltip": false,
+        "on-click": "exec wofi --show drun"
+    },
+    "custom/left_div#1": {
+        "format": "",
+        "tooltip": false
+    },
+    "custom/right_div#1": {
+        "format": "",
+        "tooltip": false
+    },
+    "custom/left_div#2": {
+        "format": "",
+        "tooltip": false
+    },
+    "custom/right_div#2": {
+        "format": "",
+        "tooltip": false
+    },
+    "custom/left_div#3": {
+        "format": "",
+        "tooltip": false
+    },
+    "custom/right_div#3": {
+        "format": "",
+        "tooltip": false
+    },
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "active": "",
+            "default": ""
+        }
+    },
+    "network": {
+        // "interface":
+        "interval": 10,
+        // "family":
+        "format": "󰤨",
+        "format-ethernet": "󰈀",
+        "format-wifi": "{icon}",
+        // "format-linked":
+        "format-disconnected": "󰤯",
+        "format-disabled": "󰤮",
+        // "format-alt":
+        "format-icons": [
+            "󰤟",
+            "󰤢",
+            "󰤥",
+            "󰤨"
+        ],
+        "tooltip-format": "Gateway: {gwaddr}",
+        "tooltip-format-ethernet": "Interface: {ifname}",
+        "tooltip-format-wifi": "Network: {essid}\nIP Addr: {ipaddr}/{cidr}\nStrength: {signalStrength}%\nFrequency: {frequency} GHz",
+        "tooltip-format-disconnected": "Wi-Fi Disconnected",
+        "tooltip-format-disabled": "Wi-Fi Disabled"
+    },
+    "bluetooth": {
+        // "controller":
+        // "format-device-preference":
+        "format": "󰂯",
+        "format-disabled": "󰂲",
+        "format-off": "󰂲",
+        "format-on": "󰂰",
+        "format-connected": "󰂱",
+        // "format-connected-battery":
+        // "format-no-controller":
+        // "rotate":
+        "min-length": 2,
+        "max-length": 2,
+        "on-click": "exec ~/.config/waybar/scripts/bluetooth.sh",
+        // "on-click-middle":
+        "on-click-right": "bluetoothctl power off && notify-send 'Bluetooth Off' -r 1925",
+        // "on-scroll-up":
+        // "on-scroll-down":
+        // "smooth-scrolling-threshold":
+        // "tooltip":
+        "tooltip-format": "Device Addr: {device_address}",
+        "tooltip-format-disabled": "Bluetooth Disabled",
+        "tooltip-format-off": "Bluetooth Off",
+        "tooltip-format-on": "Bluetooth Disconnected",
+        "tooltip-format-connected": "Device: {device_alias}",
+        "tooltip-format-enumerate-connected": "Device: {device_alias}",
+        "tooltip-format-connected-battery": "Device: {device_alias}\nBattery: {device_battery_percentage}%",
+        "tooltip-format-enumerate-connected-battery": "Device: {device_alias}\nBattery: {device_battery_percentage}%"
+    },
+    "battery": {
+        "interval": 2,
+        "format": "{icon} {capacity}%",
+        "format-charging": "  {capacity}%",
+        "format-low": "  {capacity}%",
+        "format-half": "  {capacity}%",
+        "format-ok": "  {capacity}%",
+        "format-full": "  {capacity}%",
+        "states": {
+            "low": 25,
+            "half": 50,
+            "ok": 75,
+            "full": 100
+        },
+        "tooltip": true,
+        "format-time": "{H}h {M}min"
+    },
+    "cpu": {
+        "interval": 30,
+        "format": "  {usage}%",
+    },
+    "memory": {
+        "interval": 30,
+        "format": " {percentage}%",
+    },
+    "backlight": {
+        "device": "intel_backlight",
+        "format": " {percent}%",
+        "on-scroll-up": "brightnessctl s +1%",
+        "on-scroll-down": "brightnessctl s 1%-",
+        "tooltip": true,
+        "scroll-step": 1.0,
+        "reverse-scrolling": false
+    }
+}
